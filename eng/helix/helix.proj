@@ -19,6 +19,7 @@
     <WaitForWorkItemCompletion Condition=" '$(CI)' == 'true' ">false</WaitForWorkItemCompletion>
     <FailOnMissionControlTestFailure>false</FailOnMissionControlTestFailure>
     <EnableAzurePipelinesReporter>true</EnableAzurePipelinesReporter>
+    <EnableXUnitReporter>true</EnableXUnitReporter>
     <IsExternal>true</IsExternal>
     <Creator>aspnetcore</Creator>
     <SkipInvalidConfigurations>true</SkipInvalidConfigurations>
