@@ -143,9 +143,31 @@
           the entire pattern will silently fail to evaluate correctly.
         -->
         <DotNetProjects Include="
-
+                          $(RepositoryRoot)src\Framework\ref\Microsoft.AspNetCore.App.Ref.csproj;
+                          $(RepositoryRoot)src\Framework\src\Microsoft.AspNetCore.App.Runtime.csproj;
+                          $(RepositoryRoot)src\Framework\test\Microsoft.AspNetCore.App.UnitTests.csproj;
+                          $(RepositoryRoot)src\DefaultBuilder\**\*.*proj;
+                          $(RepositoryRoot)src\Features\JsonPatch\**\*.*proj;
+                          $(RepositoryRoot)src\DataProtection\**\*.*proj;
+                          $(RepositoryRoot)src\Antiforgery\**\*.*proj;
+                          $(RepositoryRoot)src\Hosting\**\*.*proj;
                           $(RepositoryRoot)src\Http\**\*.*proj;
-
+                          $(RepositoryRoot)src\Html\**\*.*proj;
+                          $(RepositoryRoot)src\Identity\**\*.*proj;
+                          $(RepositoryRoot)src\Servers\**\*.csproj;
+                          $(RepositoryRoot)src\Security\**\*.*proj;
+                          $(RepositoryRoot)src\SiteExtensions\Microsoft.Web.Xdt.Extensions\**\*.csproj;
+                          $(RepositoryRoot)src\Shared\**\*.*proj;
+                          $(RepositoryRoot)src\Tools\**\*.*proj;
+                          $(RepositoryRoot)src\Middleware\**\*.csproj;
+                          $(RepositoryRoot)src\Razor\**\*.*proj;
+                          $(RepositoryRoot)src\Mvc\**\*.*proj;
+                          $(RepositoryRoot)src\Azure\**\*.*proj;
+                          $(RepositoryRoot)src\MusicStore\**\*.*proj;
+                          $(RepositoryRoot)src\SignalR\**\*.csproj;
+                          $(RepositoryRoot)src\Components\**\*.csproj;
+                          $(RepositoryRoot)src\ProjectTemplates\*\*.csproj;
+                          $(RepositoryRoot)src\ProjectTemplates\testassets\*\*.csproj;
                           "
                         Exclude="
                           @(ProjectToBuild);
