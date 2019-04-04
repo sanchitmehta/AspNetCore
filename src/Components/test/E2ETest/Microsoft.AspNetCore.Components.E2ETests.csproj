@@ -11,8 +11,6 @@
       Temporarily disabled until this runs on macOS
     -->
     <SkipTests Condition="'$(SeleniumE2ETestsSupported)' != 'true'">true</SkipTests>
-    <!-- https://github.com/aspnet/AspNetCore/issues/6857 -->
-    <BuildHelixPayload>false</BuildHelixPayload>
   </PropertyGroup>
 
   <ItemGroup>
