@@ -59,6 +59,7 @@ export DOTNET_MULTILEVEL_LOOKUP=0
 export DOTNET_CLI_HOME="$HELIX_CORRELATION_PAYLOAD/home"
 
 export helix="$4"
+export SeleniumProcessTrackingFolder="$HELIX_CORRELATION_PAYLOAD"
 
 $DOTNET_ROOT/dotnet vstest $1 -lt >discovered.txt
 if grep -q "Exception thrown" discovered.txt; then
