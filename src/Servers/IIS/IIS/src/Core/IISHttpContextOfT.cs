@@ -38,6 +38,12 @@ namespace Microsoft.AspNetCore.Server.IIS.Core
                 //    VerifyResponseContentLength();
                 //}
             }
+            catch (BadHttpRequestException ex)
+            {
+                SetBadRequestState(ex);
+                ReportApplicationError(ex);
+                success = false;
+            }
             catch (Exception ex)
             {
                 ReportApplicationError(ex);
@@ -47,7 +53,7 @@ namespace Microsoft.AspNetCore.Server.IIS.Core
             {
                 _streams.Stop();
 
-                if (!HasResponseStarted && _applicationException == null && _onStarting != null)
+                if (!HasResponseStarted && _requestRejectedException == null && _applicationException == null && _onStarting != null)
                 {
                     await FireOnStarting();
                     // Dispose
@@ -63,7 +69,7 @@ namespace Microsoft.AspNetCore.Server.IIS.Core
             {
                 await ProduceEnd();
             }
-            else if (!HasResponseStarted)
+            else if (!HasResponseStarted && _requestRejectedException == null)
             {
                 // If the request was aborted and no response was sent, there's no
                 // meaningful status code to log.

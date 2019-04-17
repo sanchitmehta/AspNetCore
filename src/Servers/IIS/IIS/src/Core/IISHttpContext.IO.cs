@@ -12,6 +12,7 @@ namespace Microsoft.AspNetCore.Server.IIS.Core
 {
     internal partial class IISHttpContext
     {
+        private long _consumedBytes;
         /// <summary>
         /// Reads data from the Input pipe to the user.
         /// </summary>
@@ -20,7 +21,7 @@ namespace Microsoft.AspNetCore.Server.IIS.Core
         /// <returns></returns>
         internal async Task<int> ReadAsync(Memory<byte> memory, CancellationToken cancellationToken)
         {
-            if (!_hasRequestReadingStarted)
+            if (!HasStartedConsumingRequestBody)
             {
                 InitializeRequestIO();
             }
@@ -94,10 +95,17 @@ namespace Microsoft.AspNetCore.Server.IIS.Core
 
                     var read = await AsyncIO.ReadAsync(memory);
 
+                    _consumedBytes += read;
+
                     // End of body
                     if (read == 0)
                     {
                         break;
+                    }
+
+                    if (RequestHeaders.ContentLength > MaxRequestBodySize)
+                    {
+                        BadHttpRequestException.Throw(RequestRejectionReason.RequestBodyTooLarge);
                     }
 
                     // Read was not canceled because of incoming write or IO stopping
