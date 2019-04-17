@@ -51,5 +51,9 @@ if errorlevel 1 (
     REM DO NOT EXIT and DO NOT SET EXIT_CODE to 1
 )
 
+rem Normalize test result file name
+
+ren TestResults\test-results*.xml test-results.xml
+
 exit %exit_code%
 

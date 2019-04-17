@@ -87,4 +87,8 @@ if [ $? != 0 ]; then
     # DO NOT EXIT
 fi
 
+# Normalize test result file name
+
+mv TestResults/test-results*.xml test-results.xml
+
 exit $nonflaky_exitcode
