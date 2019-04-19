@@ -329,7 +329,20 @@ namespace Microsoft.AspNetCore.Mvc
         /// Gets the <see cref="JsonSerializerOptions"/> used by <see cref="SystemTextJsonInputFormatter"/> and
         /// <see cref="SystemTextJsonOutputFormatter"/>.
         /// </summary>
-        public JsonSerializerOptions SerializerOptions { get; } = new JsonSerializerOptions();
+        public JsonSerializerOptions SerializerOptions { get; } = new JsonSerializerOptions
+        {
+            // Limit the object graph we'll consume to a fixed depth. This prevents stackoverflow exceptions
+            // from deserialization errors that might occur from deeply nested objects.
+            // This value is the same for model binding and Json.Net's serialization.
+            MaxDepth = DefaultMaxModelBindingRecursionDepth,
+
+            // Use camel casing for properties
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+
+            // Ignore casing when serializing values. Setting this to true keeps parity with Json.NET's
+            // behavior.
+            PropertyNameCaseInsensitive = true,
+        };
 
         IEnumerator<ICompatibilitySwitch> IEnumerable<ICompatibilitySwitch>.GetEnumerator() => _switches.GetEnumerator();
 
