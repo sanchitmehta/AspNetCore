@@ -232,9 +232,11 @@ namespace Templates.Test.SpaTemplateTest
                 var entries = logs.GetLog(logKind);
                 var badEntries = entries.Where(e => new LogLevel[] { LogLevel.Warning, LogLevel.Severe }.Contains(e.Level));
 
+                // We've investigated this error and found that it's non-harmful and some comments from a sockjs contributor indicate that it might be unavoidable.
+                // We'll ignore it for now, and if we manage to resolve the warningi nthe future it can be removed.
                 badEntries = badEntries.Where(e => !e.Message.EndsWith("failed: WebSocket is closed before the connection is established."));
 
-                Assert.True(badEntries.Count() == 0, "There were Warnings or Errors from the browser." + Environment.NewLine + string.Join(Environment.NewLine, badEntries));
+                Assert.False(badEntries.Any(), "There were Warnings or Errors from the browser." + Environment.NewLine + string.Join(Environment.NewLine, badEntries));
             }
         }
 
