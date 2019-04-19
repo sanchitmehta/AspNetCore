@@ -17,7 +17,7 @@ namespace Microsoft.AspNetCore.JsonPatch.Adapters
         /// <param name="target">The target object</param>
         /// <param name="contractResolver">The current contract resolver</param>
         /// <returns>The needed <see cref="IAdapter"/></returns>
-#pragma warning disable PUB0001
+#pragma warning disable PUB0001 // Pubternal type in public API. Justification: https://github.com/aspnet/AspNetCore/issues/6975#issuecomment-484130421
         IAdapter Create(object target, IContractResolver contractResolver);
 #pragma warning restore PUB0001
     }

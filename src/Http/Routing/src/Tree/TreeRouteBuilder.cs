@@ -34,9 +34,9 @@ namespace Microsoft.AspNetCore.Routing.Tree
         [Obsolete("This constructor will be marked internal in a future release. Use the service provider to create instances of TreeRouteBuilder.")]
         public TreeRouteBuilder(
             ILoggerFactory loggerFactory,
-#pragma warning disable CS0618, PUB0001 // Type or member is obsolete
+#pragma warning disable CS0618, PUB0001 // Type or member is obsolete, Pubternal API.
             ObjectPool<UriBuildingContext> objectPool,
-#pragma warning restore CS0618, PUB0001 // Type or member is obsolete
+#pragma warning restore CS0618, PUB0001 // Type or member is obsolete, Pubternal API.
             IInlineConstraintResolver constraintResolver)
         {
             if (loggerFactory == null)

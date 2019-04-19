@@ -47,7 +47,7 @@ namespace Microsoft.AspNetCore.Routing.Template
             "to create TemplateBinder instances.")]
         public TemplateBinder(
             UrlEncoder urlEncoder,
-#pragma warning disable PUB0001
+#pragma warning disable PUB0001 // Pubternal API, type or member is obsolete and will be removed
             ObjectPool<UriBuildingContext> pool,
 #pragma warning restore PUB0001
             RouteTemplate template,
@@ -72,7 +72,7 @@ namespace Microsoft.AspNetCore.Routing.Template
             "to create TemplateBinder instances.")]
         public TemplateBinder(
             UrlEncoder urlEncoder,
-#pragma warning disable PUB0001
+#pragma warning disable PUB0001 // Pubternal API, type or member is obsolete and will be removed
             ObjectPool<UriBuildingContext> pool,
 #pragma warning restore PUB0001
             RoutePattern pattern,

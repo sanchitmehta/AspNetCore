@@ -13,7 +13,7 @@ namespace Microsoft.AspNetCore.JsonPatch.Adapters
     public class AdapterFactory : IAdapterFactory
     {
         /// <inheritdoc />
-#pragma warning disable PUB0001
+#pragma warning disable PUB0001 // Pubternal type in public API. Justification: https://github.com/aspnet/AspNetCore/issues/6975#issuecomment-484130421
         public virtual IAdapter Create(object target, IContractResolver contractResolver)
 #pragma warning restore PUB0001
         {

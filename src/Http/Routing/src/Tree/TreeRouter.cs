@@ -45,9 +45,9 @@ namespace Microsoft.AspNetCore.Routing.Tree
             UrlMatchingTree[] trees,
             IEnumerable<OutboundRouteEntry> linkGenerationEntries,
             UrlEncoder urlEncoder,
-#pragma warning disable CS0618, PUB0001 // Type or member is obsolete
+#pragma warning disable CS0618, PUB0001 // Type or member is obsolete, Pubternal API.
             ObjectPool<UriBuildingContext> objectPool,
-#pragma warning restore CS0618, PUB0001 // Type or member is obsolete
+#pragma warning restore CS0618, PUB0001 // Type or member is obsolete, Pubternal API.
             ILogger routeLogger,
             ILogger constraintLogger,
             int version)
